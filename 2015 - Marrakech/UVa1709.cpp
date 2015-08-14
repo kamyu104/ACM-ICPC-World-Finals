@@ -11,26 +11,21 @@
 
 #include <iostream>
 #include <algorithm>
-#include <vector>
 #include <cmath>
 
 using std::cin;
 using std::cout;
 using std::endl;
-using std::vector;
 using std::ios;
 using std::max;
 
 int main() {
     int p, a, b, c, d, n;
     while (cin >> p >> a >> b >> c >> d >> n) {
-        vector<double> prices(n);
-        for (double i = 1; i <= n; ++i) {
-            prices[i - 1] = p * (sin(a * i + b) + cos(c * i + d) + 2);
-        }
         double max_decline = 0.0;
-        double max_price = prices.front();
-        for (const auto& price : prices) {
+        double max_price = p * (sin(a + b) + cos(c + d) + 2);
+        for (double i = 2; i <= n; ++i) {
+            double price = p * (sin(a * i + b) + cos(c * i + d) + 2);
             max_price = max(max_price, price);
             max_decline = max(max_decline, max_price - price);
         }
