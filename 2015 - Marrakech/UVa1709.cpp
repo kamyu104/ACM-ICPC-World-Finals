@@ -20,6 +20,9 @@ using std::ios;
 using std::max;
 
 int main() {
+    cout.setf(ios::fixed, ios::floatfield);
+    cout.precision(6);
+
     int p, a, b, c, d, n;
     while (cin >> p >> a >> b >> c >> d >> n) {
         double max_decline = 0.0;
@@ -29,8 +32,6 @@ int main() {
             max_price = max(max_price, price);
             max_decline = max(max_decline, max_price - price);
         }
-        cout.setf(ios::fixed, ios::floatfield);
-        cout.precision(6);
         cout << max_decline << endl;
     }
     return 0;
